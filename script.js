@@ -30,12 +30,12 @@ async function getQuotes() {
 
   // const proxyUrl = "https://blooming-retreat-52027.herokuapp.com/";
   // const apiUrl = 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
-  const apiUrl = "https://jacintodesign.github.io/quotes-api/data/quotes.json";
-  //  const apiUrl = 'https://stoic.tekloon.net/stoic-quote'
+  // const apiUrl = "https://jacintodesign.github.io/quotes-api/data/quotes.json";
+     const apiUrl = 'https://stoic.tekloon.net/stoic-quote'
   try {
     const response = await fetch(apiUrl);
     const quote = await response.json();
-    // console.log({quote})
+    console.log({quote})
     // const quote = newQuote(quotes);
     //If author is blank, add 'Unknown'
     if (quote.author === "") {
