@@ -30,13 +30,12 @@ async function getQuotes() {
 
   // const proxyUrl = "https://blooming-retreat-52027.herokuapp.com/";
   // const apiUrl = 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
-  // const apiUrl = "https://jacintodesign.github.io/quotes-api/data/quotes.json";
-     const apiUrl = 'https://stoic.tekloon.net/stoic-quote'
+  const apiUrl = "https://jacintodesign.github.io/quotes-api/data/quotes.json";
+
   try {
     const response = await fetch(apiUrl);
-    const quote = await response.json();
-    console.log({quote})
-    // const quote = newQuote(quotes);
+    const quotes = await response.json();
+    const quote = newQuote(quotes);
     //If author is blank, add 'Unknown'
     if (quote.author === "") {
       authorText.innerText = "Unknown";
@@ -44,13 +43,13 @@ async function getQuotes() {
       authorText.innerText = quote.author;
     }
     //Reduce the font size for long quotes
-    if (quote.quote.length > 120) {
+    if (quote.text.length > 120) {
       quoteText.classList.add("long-quote");
     } else {
       quoteText.classList.remove("long-quote");
     }
 
-    quoteText.innerText = quote.quote;
+    quoteText.innerText = quote.text;
     removeLoadingSpinner();
   } catch (error) {
     quotes = getQuotes();
